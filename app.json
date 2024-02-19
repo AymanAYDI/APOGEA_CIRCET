@@ -1,0 +1,61 @@
+{
+  "id": "ceb83911-214f-4a28-a4cd-27c502c85a87",
+  "name": "Circet",
+  "publisher": "Absys Cyborg",
+  "version": "23.0.202402.1",
+  "brief": "Absys Cyborg - Circet",
+  "description": "Extension Circet",
+  "privacyStatement": "https://www.absyscyborg.com/fr/societe/politique-de-confidentialite",
+  "EULA": "https://www.absyscyborg.com/EULA",
+  "help": "https://www.absyscyborg.com/fr/notre-expertise/support-assistance.html",
+  "url": "https://www.absyscyborg.com/fr/",
+  "logo": "",
+  "dependencies": [
+    {
+      "id": "7d980206-ba23-464e-9623-0d5e8541986a",
+      "name": "VERONA",
+      "publisher": "ARBENTIA CONSULTING, S.L.",
+      "version": "1.0.0.38"
+    },
+    {
+      "id": "6306a766-f42c-470b-9ca8-b1986bdcba01",
+      "name": "CIRCETFR",
+      "publisher": "Arbentia Consulting, S.L.",
+      "version": "1.0.0.43"
+    },
+    {
+      "id": "44712523-36bc-4a3f-a866-d45f00038ddc",
+      "name": "Advanced Accounting and Finance",
+      "publisher": "Absys Cyborg",
+      "version": "1.18.1.9"
+    }
+  ],
+  "screenshots": [],
+  "platform": "1.0.0.0",
+  "application": "23.0.0.0",
+  "idRanges": [
+    {
+      "from": 50000,
+      "to": 50499
+    },
+    {
+      "from": 50500,
+      "to": 50540
+    }
+  ],
+    "resourceExposurePolicy": {
+    "allowDebugging": false,
+    "allowDownloadingSource": false,
+    "includeSourceInSymbolFile": false
+  },
+  "contextSensitiveHelpUrl": "https://www.absyscyborg.com/help/",
+  "runtime": "12.0",
+  "features": [
+    "TranslationFile"
+  ],
+  "supportedLocales": [
+    "en-US",
+    "fr-FR"
+  ],
+    "target": "Cloud"
+}
