@@ -14,7 +14,7 @@ pageextension 50013 "CIR Sales Order Subform" extends "Sales Order Subform"
         }
         addafter("Location Code")
         {
-            field("Description 2"; Rec."Description 2")
+            field("CIR Description 2"; Rec."Description 2")
             {
                 ApplicationArea = All;
                 Width = 18;

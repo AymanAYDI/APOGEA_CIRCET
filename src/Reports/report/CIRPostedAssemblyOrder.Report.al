@@ -294,12 +294,10 @@ report 50001 "CIR Posted Assembly Order"
     var
         PostedAssembleToOrderLink: Record "Posted Assemble-to-Order Link";
     begin
-        with PostedAssembleToOrderLink do begin
-            if Get("Assembly Document Type"::Assembly, PostedAsmOrderNo) then
-                if "Document Type" = "Document Type"::"Sales Shipment" then
-                    exit("Document No.");
-            exit('');
-        end;
+        if PostedAssembleToOrderLink.Get(PostedAssembleToOrderLink."Assembly Document Type"::Assembly, PostedAsmOrderNo) then
+            if PostedAssembleToOrderLink."Document Type" = PostedAssembleToOrderLink."Document Type"::"Sales Shipment" then
+                exit(PostedAssembleToOrderLink."Document No.");
+        exit('');
     end;
 
     local procedure GetUomDescription(UOMCode: Code[10]): Text[50]

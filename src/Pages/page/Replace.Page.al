@@ -188,7 +188,7 @@ page 50012 "Replace"
     var
         N, R : Integer;
     begin
-        if RefG.FindSet(false, false) then begin
+        if RefG.FindSet() then begin
             N := 1;
             repeat
                 R += 1;

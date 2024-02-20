@@ -4,7 +4,7 @@ pageextension 50089 "CIRBank Acc. Recon. Lines" extends "Bank Acc. Reconciliatio
     {
         modify("Additional Transaction Info")
         {
-            Visible =false;
+            Visible = false;
         }
     }
 }

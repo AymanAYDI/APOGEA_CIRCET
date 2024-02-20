@@ -38,11 +38,11 @@ pageextension 50010 "CIR Sales Order" extends "Sales Order"
         }
         modify("Sell-to Customer No.")
         {
-            Editable = (NOT SellToCustomerNOEditable) OR (ARBVRNJobNo = '');
+            Editable = (NOT SellToCustomerNOEditable) OR (Rec.ARBVRNJobNo = '');
         }
         modify("Sell-to Customer Name")
         {
-            Editable = (NOT SellToCustomerNOEditable) OR (ARBVRNJobNo = '');
+            Editable = (NOT SellToCustomerNOEditable) OR (Rec.ARBVRNJobNo = '');
         }
         modify("Exit Point")
         {

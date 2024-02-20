@@ -28,7 +28,7 @@ pageextension 50037 "CIR Customer Ledger Entries" extends "Customer Ledger Entri
         }
         addafter("Document No.")
         {
-            field("Document Date"; Rec."Document Date")
+            field("CIR Document Date"; Rec."Document Date")
             {
                 ToolTip = 'Specifies the value of the Document Date ', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Spécifie la valeur de la date de document"}]}';
                 ApplicationArea = All;

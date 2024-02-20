@@ -14,7 +14,7 @@ pageextension 50036 "CIR Vendor Ledger Entries" extends "Vendor Ledger Entries"
         }
         addafter("Document No.")
         {
-            field("Document Date"; Rec."Document Date")
+            field("CIR Document Date"; Rec."Document Date")
             {
                 Width = 13;
                 ApplicationArea = All;

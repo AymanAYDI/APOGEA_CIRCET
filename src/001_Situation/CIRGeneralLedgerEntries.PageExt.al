@@ -9,7 +9,7 @@ pageextension 50500 "CIR General Ledger Entries" extends "General Ledger Entries
                 ApplicationArea = All;
                 ToolTip = 'Specifies the entry type.', Comment = '{ "instructions": "", "translations": [ { "lang": "FRA", "txt": "Spécifie le type d''entrée." }, { "lang": "FRB", "txt": "<ToComplete>" }, { "lang": "DEU", "txt": "<ToComplete>" }, { "lang": "ESP", "txt": "<ToComplete>" }, { "lang": "ITA", "txt": "<ToComplete>" }, { "lang": "NLB", "txt": "<ToComplete>" }, { "lang": "NLD", "txt": "<ToComplete>" }, { "lang": "PTG", "txt": "<ToComplete>" } ] }';
             }
-            field("Document Date"; "Document Date")
+            field("Document Date"; Rec."Document Date")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Document Date';
@@ -126,9 +126,9 @@ pageextension 50500 "CIR General Ledger Entries" extends "General Ledger Entries
         CIRUserManagement: Codeunit "CIR User Management";
     begin
         if not (CIRUserManagement.CheckRightUserByGroup(UserGroup.FIELDNO("Allow employees entries"))) then begin
-            FILTERGROUP(2);
+            Rec.FILTERGROUP(2);
             rec.SetFilter("Source Type", '<>%1', Rec."Source Type"::Employee);
-            FILTERGROUP(0);
+            Rec.FILTERGROUP(0);
         end;
         ClearTotalAmount();
     end;

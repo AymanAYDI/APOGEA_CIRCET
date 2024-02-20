@@ -38,9 +38,9 @@ pageextension 50503 "CIR Employee Ledger Entries" extends "Employee Ledger Entri
         CIRUserManagement: Codeunit "CIR User Management";
     begin
         if not (CIRUserManagement.CheckRightUserByGroup(UserGroup.FIELDNO("Allow employees entries"))) then begin
-            FILTERGROUP(2);
+            Rec.FILTERGROUP(2);
             rec.SetFilter("Entry No.", '%1', 0);
-            FILTERGROUP(2);
+            Rec.FILTERGROUP(2);
         end;
     end;
 }

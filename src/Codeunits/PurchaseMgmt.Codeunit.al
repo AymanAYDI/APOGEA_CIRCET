@@ -37,7 +37,7 @@ codeunit 50005 "Purchase Mgmt"
             PurchaseLine.SetRange("Document No.", PurchaseHeader."No.");
             PurchaseLine.SetFilter("Qty. to Receive (Base)", '<>0');
             if not CIRUserManagement.CheckRightUserByGroup(UserGroup.FieldNo("Invoice Purchase Rights")) then
-                if PurchaseLine.FindSet(false, false) then
+                if PurchaseLine.FindSet() then
                     repeat
                         if PurchaseLine."Line Amount" < 0 then
                             Error(NotRightsToReceive_Err);

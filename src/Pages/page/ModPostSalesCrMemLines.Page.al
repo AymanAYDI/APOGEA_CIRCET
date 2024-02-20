@@ -35,7 +35,7 @@ page 50020 "Mod Post Sales CrMem Lines"
                     end;
 
                 }
-                field(FilteredTypeField; FormatType())
+                field(FilteredTypeField; Rec.FormatType())
                 {
                     Caption = 'Type', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Type"}]}';
                     ToolTip = 'Specifies the value of the Type field.', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Spécifie la valeur du type"}]}';
@@ -81,6 +81,6 @@ page 50020 "Mod Post Sales CrMem Lines"
 
     trigger OnDeleteRecord(): Boolean
     begin
-        TESTFIELD(Type, Type::" ");
+        Rec.TESTFIELD(Type, Rec.Type::" ");
     end;
 }

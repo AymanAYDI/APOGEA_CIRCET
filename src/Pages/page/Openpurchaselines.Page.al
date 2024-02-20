@@ -260,13 +260,13 @@ page 50016 "Open Purchase Lines"
                 lPurchaseLine.RESET();
                 lPurchaseLine.SETRANGE("Document Type", lPurchaseLine."Document Type"::Order);
                 lPurchaseLine.SETRANGE("Document No.", PurchaseLine."Document No.");
-                lPurchaseLine.SETFILTER("Type", '<>%1', Type::"Fixed Asset");       // Pas de test du projet sur les immo
+                lPurchaseLine.SETFILTER("Type", '<>%1', Rec.Type::"Fixed Asset");       // Pas de test du projet sur les immo
                 lPurchaseLine.SETFILTER("Qty. to Receive", '<>0');
                 lPurchaseLine.SETRANGE("Job No.", '');
                 IF lPurchaseLine.FindFirst() THEN
                     //On vérifie qu'un projet a été affecté uniquement pour les articles non stockés
                     IF (lPurchaseLine.Type = lPurchaseLine.Type::Item) then
-                        IF lItem.GET("No.") then
+                        IF lItem.GET(Rec."No.") then
                             IF lItem.Type <> lItem.Type::Inventory THEN
                                 lPurchaseLine.TESTFIELD("Job No.");
 

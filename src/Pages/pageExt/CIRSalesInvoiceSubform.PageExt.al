@@ -14,7 +14,7 @@ pageextension 50017 "CIR Sales Invoice Subform" extends "Sales Invoice Subform"
         }
         addafter(Description)
         {
-            field("Description 2"; Rec."Description 2")
+            field("CIR Description 2"; Rec."Description 2")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Description 2 ';

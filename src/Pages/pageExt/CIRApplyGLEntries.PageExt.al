@@ -96,16 +96,15 @@ pageextension 50097 "CIR Apply G/L Entries" extends "Apply G/L Entries"
         CIRUserManagement: Codeunit "CIR User Management";
     begin
         if not (CIRUserManagement.CheckRightUserByGroup(UserGroup.FIELDNO("Allow employees entries"))) then begin
-            FILTERGROUP(2);
+            Rec.FILTERGROUP(2);
             rec.SetFilter("Source Type", '<>%1', Rec."Source Type"::Employee);
-            FILTERGROUP(0);
+            Rec.FILTERGROUP(0);
         end;
     end;
 
     local procedure SetApplyAndCalculAmount(OnlyNotApplied: Boolean)
     var
         GLEntry: Record "G/L Entry";
-        GLEntriesApplication: Codeunit "G/L Entry Application";
     begin
         SelectedCredit := 0;
         SelectedDebit := 0;
@@ -113,7 +112,7 @@ pageextension 50097 "CIR Apply G/L Entries" extends "Apply G/L Entries"
         GLEntry.Copy(Rec);
         CurrPage.SetSelectionFilter(GLEntry);
         OnlyNotApplied := true;
-        GLEntriesApplication.SetAppliesToID(GLEntry, OnlyNotApplied);
+        SetAppliesToID(GLEntry, OnlyNotApplied);
         clear(GLEntry);
         GLEntry.SetRange("G/L Account No.", Rec."G/L Account No.");
         GLEntry.SetFilter("Applies-to ID", '<>''''');
@@ -122,6 +121,30 @@ pageextension 50097 "CIR Apply G/L Entries" extends "Apply G/L Entries"
                 SelectedCredit := SelectedCredit + GLEntry."Credit Amount";
                 SelectedDebit := SelectedDebit + GLEntry."Debit Amount";
             until GLEntry.Next() = 0;
+    end;
+
+    local procedure SetAppliesToID(var GLEntry: Record "G/L Entry"; OnlyNotApplied: Boolean)
+    var
+        EntryApplID: Code[50];
+    begin
+        GLEntry.LockTable();
+        if OnlyNotApplied then begin
+            GLEntry.SetFilter(GLEntry.Letter, '<>''''');
+            GLEntry.ModifyAll(GLEntry."Applies-to ID", '');
+            GLEntry.SetRange(GLEntry.Letter, '');
+        end;
+        if GLEntry.FindFirst() then begin
+            // Make Applies-to ID
+            if GLEntry."Applies-to ID" <> '' then
+                EntryApplID := ''
+            else
+                if EntryApplID = '' then begin
+                    EntryApplID := UserId;
+                    if EntryApplID = '' then
+                        EntryApplID := '***';
+                end;
+            GLEntry.ModifyAll(GLEntry."Applies-to ID", EntryApplID);
+        end;
     end;
 
     var

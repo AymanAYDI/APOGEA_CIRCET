@@ -311,7 +311,7 @@ report 50010 "CIR Draft Recapitulation"
                 PaymtHeader.GET("No.");
                 PostingDate := PaymtHeader."Posting Date";
 
-                PaymtManagt.PaymentBankAcc(BankAccountAddr, PaymtHeader);
+                PaymentBankAcc(BankAccountAddr, PaymtHeader);
             end;
 
             trigger OnPreDataItem()
@@ -419,5 +419,14 @@ report 50010 "CIR Draft Recapitulation"
             EXIT(GLSetup."LCY Code");
         END;
         EXIT("Payment Lines1"."Currency Code");
+    end;
+
+    local procedure PaymentBankAcc(var AddrArray: array[8] of Text[100]; BankAcc: Record "Payment Header")
+    var
+        FormatAddress: Codeunit "Format Address";
+    begin
+        FormatAddress.FormatAddr(
+              AddrArray, BankAcc."Bank Name", BankAcc."Bank Name 2", BankAcc."Bank Contact", BankAcc."Bank Address", BankAcc."Bank Address 2",
+              BankAcc."Bank City", BankAcc."Bank Post Code", BankAcc."Bank County", BankAcc."Bank Country/Region Code");
     end;
 }

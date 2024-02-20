@@ -121,8 +121,8 @@ pageextension 50044 "CIR Payment Slip" extends "Payment Slip"
                         PaymentLine.MODIFYALL(Selected, true);
                     end;
 
-                    "Print" := TRUE;
-                    MODIFY();
+                    Rec."Print" := TRUE;
+                    Rec.MODIFY();
 
                     COMMIT();
 
@@ -134,8 +134,8 @@ pageextension 50044 "CIR Payment Slip" extends "Payment Slip"
                     PaymentLine.SETRANGE("No.", Rec."No.");
                     PaymentLine.MODIFYALL(Selected, false);
 
-                    "Print" := FALSE;
-                    MODIFY();
+                    Rec."Print" := FALSE;
+                    Rec.MODIFY();
                 end;
             }
         }

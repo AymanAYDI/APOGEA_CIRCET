@@ -155,7 +155,7 @@ codeunit 50022 "Assembly Mgt."
     begin
         AssemblyLine.SetRange("Document No.", AssemblyHeader."No.");
         AssemblyLine.SetRange(Type, AssemblyLine.Type::Item);
-        if AssemblyLine.FindSet(false, false) then
+        if AssemblyLine.FindSet() then
             repeat
                 BOMComponent.SetRange("Parent Item No.", AssemblyLine."No.");
                 if not BOMComponent.IsEmpty() then

@@ -164,7 +164,6 @@ report 50026 "Employee Trial Balance FR"
                 FiltreDateCalc.CreateFiscalYearFilter(TextDate, TextDate, StartDate, 0);
 #pragma warning restore AA0139
                 TextDate := ConvertStr(TextDate, '.', ',');
-                FiltreDateCalc.VerifiyDateFilter(CopyStr(TextDate, 1, 30));
                 TextDate := CopyStr(TextDate, 1, 8);
                 Evaluate(PreviousStartDate, TextDate);
                 if CopyStr(GetFilter("Date Filter"), StrLen(GetFilter("Date Filter")), 1) = '.' then

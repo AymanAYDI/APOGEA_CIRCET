@@ -14,7 +14,7 @@ pageextension 50015 "CIR Po. Sales Cr. Memo Subform" extends "Posted Sales Cr. M
         }
         addafter(Quantity)
         {
-            field("Description 2"; Rec."Description 2")
+            field("CIR Description 2"; Rec."Description 2")
             {
                 Caption = 'Description 2', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Désignation 2"}]}';
                 ToolTip = 'Specifies a second descriptive text.', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Spécifie un second texte descriptif."}]}';

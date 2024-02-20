@@ -281,7 +281,7 @@ codeunit 50049 "Import XML Mgt."
         TempXMLBufferl.COPY(TempXMLBuffer, TRUE);
         TempXMLBufferl.RESET();
         TempXMLBufferl.SETRANGE("Parent Entry No.", EntryNo);
-        IF TempXMLBufferl.FINDSET(FALSE, FALSE) THEN
+        IF TempXMLBufferl.FINDSET() THEN
             REPEAT
                 IF (TempXMLBufferl.Name = 'key') AND (TempXMLBufferl.Value = 'cusProject') THEN
                     BooLJobNo := TRUE
@@ -680,7 +680,7 @@ codeunit 50049 "Import XML Mgt."
                             TempXMLBuffer4.COPY(TempXMLBuffer, TRUE);
                             TempXMLBuffer4.RESET();
                             TempXMLBuffer4.SETRANGE("Parent Entry No.", TempXMLBuffer2."Entry No.");
-                            IF TempXMLBuffer4.FINDSET(FALSE, FALSE) THEN
+                            IF TempXMLBuffer4.FINDSET() THEN
                                 REPEAT
                                     CodLJobNo := FctGetJob2(TempXMLBuffer4."Entry No.");
                                     Pos := STRPOS(CodLJobNo, '_') - 1;

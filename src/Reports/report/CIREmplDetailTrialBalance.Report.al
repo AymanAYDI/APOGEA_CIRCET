@@ -378,7 +378,6 @@ report 50021 "CIR Empl. Detail Trial Balance"
                 PreviousEndDate := ClosingDate(StartDate - 1);
                 DateFilterCalc.CreateFiscalYearFilter(TextDate, TextDate, StartDate, 0);
                 TextDate := ConvertStr(TextDate, '.', ',');
-                DateFilterCalc.VerifiyDateFilter(TextDate);
                 TextDate := CopyStr(TextDate, 1, 8);
                 Evaluate(PreviousStartDate, TextDate);
                 if CopyStr(GetFilter("Date Filter"), StrLen(GetFilter("Date Filter")), 1) = '.' then

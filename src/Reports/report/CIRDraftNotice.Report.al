@@ -370,7 +370,7 @@ report 50011 "CIR Draft Notice"
                             FormatAddress.Vendor(VendAddr, Vendor)
                         ELSE
                             IF PaymtAddr.GET("Account Type"::Vendor, "Account No.", "Payment Address Code") THEN
-                                PaymtManagt.PaymentAddr(VendAddr, PaymtAddr);
+                                PaymentAddr(VendAddr, PaymtAddr);
 
                         DraftAmount := ABS(Amount);
                     end;
@@ -493,5 +493,14 @@ report 50011 "CIR Draft Notice"
             EXIT(GLSetup."LCY Code");
 
         EXIT("Payment Lines1"."Currency Code");
+    end;
+
+    local procedure PaymentAddr(var AddrArray: array[8] of Text[100]; PaymentAddress: Record "Payment Address")
+    var
+        FormatAddress: Codeunit "Format Address";
+    begin
+        FormatAddress.FormatAddr(
+              AddrArray, PaymentAddress.Name, PaymentAddress."Name 2", PaymentAddress.Contact, PaymentAddress.Address, PaymentAddress."Address 2",
+              PaymentAddress.City, PaymentAddress."Post Code", PaymentAddress.County, PaymentAddress."Country/Region Code");
     end;
 }

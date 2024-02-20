@@ -109,16 +109,16 @@ report 50014 "CIR Standard Purchase - Order"
             column(CompanyVATRegistrationNo_Lbl; CompanyInfo.GetVATRegistrationNumberLbl())
             {
             }
-            column(CompanyLegalOffice; CompanyInfo.GetLegalOffice())
+            column(CompanyLegalOffice; '')
             {
             }
-            column(CompanyLegalOffice_Lbl; CompanyInfo.GetLegalOfficeLbl())
+            column(CompanyLegalOffice_Lbl; '')
             {
             }
-            column(CompanyCustomGiro; CompanyInfo.GetCustomGiro())
+            column(CompanyCustomGiro; '')
             {
             }
-            column(CompanyCustomGiro_Lbl; CompanyInfo.GetCustomGiroLbl())
+            column(CompanyCustomGiro_Lbl; '')
             {
             }
             column(CompanyAPECode_Lbl; CompanyAPECodeLbl) { }
@@ -625,9 +625,8 @@ report 50014 "CIR Standard Purchase - Order"
                     if "Vendor Item No." <> '' then
                         ItemNo := "Vendor Item No.";
 
-                    if ItemReferenceMgt.IsEnabled() then
-                        if "Item Reference No." <> '' then
-                            ItemNo := "Item Reference No.";
+                    if "Item Reference No." <> '' then
+                        ItemNo := "Item Reference No.";
                     FormatDocument.SetPurchaseLine("Purchase Line", FormattedQuanitity, FormattedDirectUnitCost, FormattedVATPct, FormattedLineAmount);
                 end;
             }

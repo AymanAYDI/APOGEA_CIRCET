@@ -12,7 +12,7 @@ pageextension 50038 "CIRPurchaseOrderSubform" extends "Purchase Order Subform"
         }
         addafter(Description)
         {
-            field("Description 2"; Rec."Description 2")
+            field("CIR Description 2"; Rec."Description 2")
             {
                 ToolTip = 'Specifies the value of the Description 2', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Description 2"}]}';
                 ApplicationArea = All;
@@ -50,7 +50,7 @@ pageextension 50038 "CIRPurchaseOrderSubform" extends "Purchase Order Subform"
                 ApplicationArea = All;
                 Width = 10;
             }
-            field("Net Weight"; Rec."Net Weight")
+            field("CIR Net Weight"; Rec."Net Weight")
             {
                 ToolTip = 'Net Weight', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Poids net"}]}';
                 ApplicationArea = All;
@@ -162,7 +162,7 @@ pageextension 50038 "CIRPurchaseOrderSubform" extends "Purchase Order Subform"
 
     trigger OnAfterGetRecord()
     begin
-        CASE Type of
+        CASE Rec.Type of
             rec.Type::"Fixed Asset":
                 IsFAEditable := false;
             ELSE

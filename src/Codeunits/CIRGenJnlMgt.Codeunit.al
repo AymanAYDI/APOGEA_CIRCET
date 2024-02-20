@@ -36,6 +36,7 @@ codeunit 50029 "CIR Gen. Jnl Mgt"
         SourceCodeSetup: Record "Source Code Setup";
         Job: Record Job;
         DimensionManagement: Codeunit DimensionManagement;
+        DefaultDimSource: List of [Dictionary of [Integer, Code[20]]];
         ErrAccountType_Lbl: Label '%1 must be G/L Account or Bank Account.', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"%1 doit être un compte général ou un compte bancaire."}]}';
     begin
         //la règle s'applique uniquement pour l'axe 4
@@ -43,12 +44,12 @@ codeunit 50029 "CIR Gen. Jnl Mgt"
             if GenJournalLine."Source Code" <> SourceCodeSetup."Job G/L WIP" then
                 GenJournalLine.Validate("Job Task No.", '');
             if ShortcutDimCode[DimIndex] = '' then begin
-                GenJournalLine.CreateDim(
-                  DATABASE::Job, ShortcutDimCode[DimIndex],
-                  DimensionManagement.TypeToTableID1(GenJournalLine."Account Type".AsInteger()), GenJournalLine."Account No.",
-                  DimensionManagement.TypeToTableID1(GenJournalLine."Bal. Account Type".AsInteger()), GenJournalLine."Bal. Account No.",
-                  DATABASE::"Salesperson/Purchaser", GenJournalLine."Salespers./Purch. Code",
-                  DATABASE::Campaign, GenJournalLine."Campaign No.");
+                DimensionManagement.AddDimSource(DefaultDimSource, Database::Job, ShortcutDimCode[DimIndex]);
+                DimensionManagement.AddDimSource(DefaultDimSource, DimensionManagement.TypeToTableID1(GenJournalLine."Account Type".AsInteger()), GenJournalLine."Account No.");
+                DimensionManagement.AddDimSource(DefaultDimSource, DimensionManagement.TypeToTableID1(GenJournalLine."Bal. Account Type".AsInteger()), GenJournalLine."Bal. Account No.");
+                DimensionManagement.AddDimSource(DefaultDimSource, Database::"Salesperson/Purchaser", GenJournalLine."Salespers./Purch. Code");
+                DimensionManagement.AddDimSource(DefaultDimSource, Database::Campaign, GenJournalLine."Campaign No.");
+                GenJournalLine.CreateDim(DefaultDimSource);
                 exit;
             end;
             if GenJournalLine."Bal. Account No." <> '' then
@@ -58,12 +59,12 @@ codeunit 50029 "CIR Gen. Jnl Mgt"
             Job.Get(ShortcutDimCode[DimIndex]);
             Job.TestBlocked();
             GenJournalLine."Job Currency Code" := Job."Currency Code";
-            GenJournalLine.CreateDim(
-              DATABASE::Job, ShortcutDimCode[DimIndex],
-              DimensionManagement.TypeToTableID1(GenJournalLine."Account Type".AsInteger()), GenJournalLine."Account No.",
-              DimensionManagement.TypeToTableID1(GenJournalLine."Bal. Account Type".AsInteger()), GenJournalLine."Bal. Account No.",
-              DATABASE::"Salesperson/Purchaser", GenJournalLine."Salespers./Purch. Code",
-              DATABASE::Campaign, GenJournalLine."Campaign No.");
+            DimensionManagement.AddDimSource(DefaultDimSource, Database::Job, ShortcutDimCode[DimIndex]);
+            DimensionManagement.AddDimSource(DefaultDimSource, DimensionManagement.TypeToTableID1(GenJournalLine."Account Type".AsInteger()), GenJournalLine."Account No.");
+            DimensionManagement.AddDimSource(DefaultDimSource, DimensionManagement.TypeToTableID1(GenJournalLine."Bal. Account Type".AsInteger()), GenJournalLine."Bal. Account No.");
+            DimensionManagement.AddDimSource(DefaultDimSource, Database::"Salesperson/Purchaser", GenJournalLine."Salespers./Purch. Code");
+            DimensionManagement.AddDimSource(DefaultDimSource, Database::Campaign, GenJournalLine."Campaign No.");
+            GenJournalLine.CreateDim(DefaultDimSource);
         end;
     end;
 

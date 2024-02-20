@@ -18,7 +18,7 @@ pageextension 50016 "CIR Sales Invoice" extends "Sales Invoice"
         }
         addafter("Prices Including VAT")
         {
-            field("Customer Posting Group"; Rec."Customer Posting Group")
+            field("CIR Customer Posting Group"; Rec."Customer Posting Group")
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Customer Posting Group ';

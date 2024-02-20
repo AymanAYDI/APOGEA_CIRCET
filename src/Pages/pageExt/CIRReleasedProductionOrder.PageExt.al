@@ -27,7 +27,7 @@ pageextension 50079 "CIR Released Production Order" extends "Released Production
                 var
                     ProdOrderMgt: Codeunit "Prod. Order Mgt.";
                 begin
-                    ProdOrderMgt.ExecuteProductionFollowUP("No.", true, true);
+                    ProdOrderMgt.ExecuteProductionFollowUP(Rec."No.", true, true);
                 end;
             }
         }

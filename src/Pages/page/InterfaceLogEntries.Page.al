@@ -1,3 +1,4 @@
+#pragma implicitwith disable
 page 50011 "Interface Log Entries"
 {
     ApplicationArea = All;
@@ -54,7 +55,7 @@ page 50011 "Interface Log Entries"
                     Visible = false;
                     ToolTip = 'Specifies the value of the Statement Type', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Type de déclaration"}]}';
                 }
-                field("Bank Account No."; "Bank Account No.")
+                field("Bank Account No."; Rec."Bank Account No.")
                 {
                     ApplicationArea = All;
                     StyleExpr = TxtStyleExpr;
@@ -110,7 +111,7 @@ page 50011 "Interface Log Entries"
                     ToolTip = 'Specifies the value of the Error Message', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Message d''erreur"}]}';
                     StyleExpr = TxtStyleExpr;
                 }
-                field("Company Name"; "Company Name")
+                field("Company Name"; Rec."Company Name")
                 {
                     ApplicationArea = All;
                     Visible = false;
@@ -201,3 +202,4 @@ page 50011 "Interface Log Entries"
     var
         TxtStyleExpr: Text;
 }
+#pragma implicitwith restore

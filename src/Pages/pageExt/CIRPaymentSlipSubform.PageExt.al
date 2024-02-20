@@ -78,7 +78,7 @@ pageextension 50003 "CIR Payment Slip Subform" extends "Payment Slip Subform"
                 begin
                     ValidateShortcutDimension(4);
                     if Job.Get(ShortcutDimCode[4]) then begin
-                        Validate("Shortcut Dimension 1 Code", Job."Global Dimension 1 Code");
+                        Rec.Validate("Shortcut Dimension 1 Code", Job."Global Dimension 1 Code");
                         CurrPage.Update();
                     end;
                 end;

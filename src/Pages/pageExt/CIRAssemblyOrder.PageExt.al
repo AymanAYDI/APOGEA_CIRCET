@@ -113,7 +113,7 @@ pageextension 50055 "CIR Assembly Order" extends "Assembly Order"
                 {
                     ToolTip = 'Specifies the value of the New Bin Code field.', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Nouveau code d''emplacement"}]}';
                     ApplicationArea = All;
-                    Editable = "Change Bin Code";
+                    Editable = Rec."Change Bin Code";
                 }
             }
         }

@@ -51,7 +51,7 @@ pageextension 50007 "CIR Purchase Order" extends "Purchase Order"
                 Importance = Promoted;
                 ToolTip = 'Specifies the value of the Requested Receipt Date ';
             }
-            field(Description; Description)
+            field(Description; Rec.Description)
             {
                 ApplicationArea = All;
                 ToolTip = 'Specifies the value of the Description', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Désignation"}]}';

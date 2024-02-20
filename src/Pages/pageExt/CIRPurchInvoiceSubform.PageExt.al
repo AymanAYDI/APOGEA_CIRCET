@@ -4,13 +4,13 @@ pageextension 50077 "CIR Purch. Invoice Subform" extends "Purch. Invoice Subform
     {
         addafter("Tax Area Code")
         {
-            field("Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
+            field("CIR Gen. Prod. Posting Group"; Rec."Gen. Prod. Posting Group")
             {
                 ApplicationArea = All;
                 Width = 8;
                 ToolTip = 'Specifies the value of the Gen. Prod. Posting Group ';
             }
-            field("VAT Prod. Posting Group99165"; Rec."VAT Prod. Posting Group")
+            field("CIR VAT Prod. Posting Group"; Rec."VAT Prod. Posting Group")
             {
                 ApplicationArea = All;
                 Width = 7;

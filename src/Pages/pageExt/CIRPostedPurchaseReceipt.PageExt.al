@@ -4,7 +4,7 @@ pageextension 50095 "CIRPosted Purchase Receipt" extends "Posted Purchase Receip
     {
         addafter("Vendor Order No.")
         {
-            field("Description Order"; "Description Order")
+            field("Description Order"; Rec."Description Order")
             {
                 ApplicationArea = ALL;
                 Editable = false;

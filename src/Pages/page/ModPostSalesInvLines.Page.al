@@ -34,7 +34,7 @@ page 50018 "Mod Post Sales Inv. Lines"
                             Error(ControlStationRefCannotBeEmpty_Err);
                     end;
                 }
-                field(FilteredTypeField; FormatType())
+                field(FilteredTypeField; Rec.FormatType())
                 {
                     Caption = 'Type', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Type"}]}';
                     ToolTip = 'Specifies the value of the Type field.', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Spécifie la valeur du type"}]}';
@@ -80,6 +80,6 @@ page 50018 "Mod Post Sales Inv. Lines"
 
     trigger OnDeleteRecord(): Boolean
     begin
-        TESTFIELD(Type, Type::" ");
+        Rec.TESTFIELD(Type, Rec.Type::" ");
     end;
 }

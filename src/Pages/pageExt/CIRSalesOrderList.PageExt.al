@@ -29,7 +29,7 @@ pageextension 50029 "CIR Sales Order List" extends "Sales Order List"
         }
         addafter(Status)
         {
-            field("Your Reference"; Rec."Your Reference")
+            field("CIR Your Reference"; Rec."Your Reference")
             {
                 ToolTip = 'Specifies the value of the Your Reference field', Comment = '{"instructions":"","translations":[{"lang":"FRA","txt":"Spécifie la valeur du champ Votre référence"}]}';
                 ApplicationArea = All;

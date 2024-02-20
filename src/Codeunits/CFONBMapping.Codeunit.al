@@ -11,7 +11,7 @@ codeunit 50013 "CFONB Mapping"
         DataExch: Record "Data Exch.";
         RecRef: RecordRef;
     begin
-        DataExch.GET("Data Exch. Entry No.");
+        DataExch.GET(Rec."Data Exch. Entry No.");
         RecRef.GETTABLE(Rec);
         ProcessAllLinesColumnMapping(DataExch, RecRef);
     end;

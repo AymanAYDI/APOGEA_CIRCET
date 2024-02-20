@@ -41,9 +41,9 @@ pageextension 50078 "CIR Employee List" extends "Employee List"
         CIRUserManagement: Codeunit "CIR User Management";
     begin
         if not (CIRUserManagement.CheckRightUserByGroup(UserGroup.FIELDNO("Allow employees entries"))) then begin
-            FILTERGROUP(2);
-            SetFilter(rec."Date Filter", '010101..010101');
-            FILTERGROUP(2);
+            Rec.FILTERGROUP(2);
+            Rec.SetFilter(rec."Date Filter", '010101..010101');
+            Rec.FILTERGROUP(2);
         end;
     end;
 }

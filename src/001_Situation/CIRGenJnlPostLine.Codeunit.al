@@ -2869,7 +2869,7 @@ codeunit 50503 "CIR Gen. Jnl.-Post Line"
             SalesReceivablesSetup.Get();
             if SalesReceivablesSetup."Appln. between Currencies" = SalesReceivablesSetup."Appln. between Currencies"::None then
                 OldCustLedgerEntry.SetRange("Currency Code", NewCVLedgerEntryBuffer."Currency Code");
-            if OldCustLedgerEntry.FindSet(false, false) then
+            if OldCustLedgerEntry.FindSet() then
                 repeat
                     if GenJnlApply.CheckAgainstApplnCurrency(
                          NewCVLedgerEntryBuffer."Currency Code", OldCustLedgerEntry."Currency Code", GenJournalLine."Account Type"::Customer, false)
@@ -3574,7 +3574,7 @@ codeunit 50503 "CIR Gen. Jnl.-Post Line"
             PurchasesPayablesSetup.Get();
             if PurchasesPayablesSetup."Appln. between Currencies" = PurchasesPayablesSetup."Appln. between Currencies"::None then
                 OldVendorLedgerEntry.SetRange("Currency Code", NewCVLedgerEntryBuffer."Currency Code");
-            if OldVendorLedgerEntry.FindSet(false, false) then
+            if OldVendorLedgerEntry.FindSet() then
                 repeat
                     if GenJnlApply.CheckAgainstApplnCurrency(
                          NewCVLedgerEntryBuffer."Currency Code", OldVendorLedgerEntry."Currency Code", GenJournalLine."Account Type"::Vendor, false)
@@ -3646,7 +3646,7 @@ codeunit 50503 "CIR Gen. Jnl.-Post Line"
                 OldEmployeeLedgerEntry.SetFilter("Posting Date", '..%1', GenJournalLine."Posting Date");
 
             OldEmployeeLedgerEntry.SetRange("Currency Code", NewCVLedgerEntryBuffer."Currency Code");
-            if OldEmployeeLedgerEntry.FindSet(false, false) then
+            if OldEmployeeLedgerEntry.FindSet() then
                 repeat
                     if (OldEmployeeLedgerEntry."Posting Date" > ApplyingDate) and (OldEmployeeLedgerEntry."Applies-to ID" <> '') then
                         ApplyingDate := OldEmployeeLedgerEntry."Posting Date";
